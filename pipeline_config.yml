@@ -1,6 +1,6 @@
 nodes:
 - input.visual:
-    source: 5 aug even fri 1300.mp4
+    source: img.png
     threading: True
     buffering: True
 
@@ -10,10 +10,12 @@ nodes:
     show: ["count", "fps"]    
 - output.screen:
     window_size: {width: 1920, height: 1080}
+- output.media_writer:
+    output_dir: "processed-footage/videos"
 - output.csv_writer:
     stats_to_track: ["count"]
     file_path: "processed-footage/logs/footage.csv"
-    logging_interval: 15
+    logging_interval: 0
 
 
 
