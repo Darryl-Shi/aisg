@@ -1,0 +1,19 @@
+nodes:
+- input.visual:
+    source: 5 aug even fri 1300.mp4
+    threading: True
+    buffering: True
+
+- model.csrnet
+- dabble.fps                        
+- draw.legend: 
+    show: ["count", "fps"]    
+- output.screen:
+    window_size: {width: 1920, height: 1080}
+- output.csv_writer:
+    stats_to_track: ["count"]
+    file_path: "processed-footage/logs/footage.csv"
+    logging_interval: 15
+
+
+

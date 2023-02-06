@@ -1,0 +1,32 @@
+# #peekingduck run
+
+nodes:
+- input.visual:
+    source: 5 aug even fri 1300.mp4
+    threading: True
+    buffering: True
+
+- model.yolo:
+    model_type: "v4"
+    detect: ["person"]
+    score_threshold: 0.5 #confidence level
+
+    
+- draw.bbox:
+    show_labels: True
+    
+- dabble.bbox_count
+- dabble.fps                        
+- draw.legend: 
+    show: ["count", "fps"]                  
+- custom_nodes.draw.score
+- output.screen:
+    window_size: {width: 1920, height: 1080}
+- output.csv_writer:
+    stats_to_track: ["count"]
+    file_path: "processed-footage/logs/footage.csv"
+    logging_interval: 15
+- output.media_writer:                
+    output_dir: "processed-footage/videos"
+
+
